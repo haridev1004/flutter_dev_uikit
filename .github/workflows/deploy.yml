@@ -28,8 +28,16 @@ jobs:
 
         # Get dependencies and make assigned appbundle
       - run: | 
+            flutter channel stable
+           
+      
+      - name: Install Dependencies
+        run: /
+            flutter upgrade
             flutter pub get
-            flutter build appbundle
+
+      - name: Build AppBundle
+        run:  flutter build appbundle --release
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
