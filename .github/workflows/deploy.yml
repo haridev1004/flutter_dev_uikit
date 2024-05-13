@@ -18,15 +18,6 @@ jobs:
           channel: ${{env.FLUTTER_CHANNEL}}
           flutter-version: ${{env.FLUTTER_VERSION}}
 
-      # Creating the key.properties file
-      - run: |
-          echo keyPassword=\${{ secrets.KEYSTORE_PASSWORD }} > ${{env.PROPERTIES_PATH}}
-          echo storePassword=\${{ secrets.KEY_PASSWORD }} >> ${{env.PROPERTIES_PATH}}
-          echo keyAlias=\${{ secrets.KEY_ALIAS }} >> ${{env.PROPERTIES_PATH}}
-        # Decoding base64 key into a file
-      - run: echo "${{ secrets.KEYSTORE_File }}" | base64 --decode > android/app/key.jks
-
-        # Get dependencies and make assigned appbundle
       - run: | 
             flutter channel stable
            
