@@ -18,23 +18,23 @@ jobs:
           channel: ${{env.FLUTTER_CHANNEL}}
           flutter-version: ${{env.FLUTTER_VERSION}}
 
-      - run: | 
-            flutter channel stable
+      - run: flutter build appbundle
            
       
-      - name: Install Dependencies
-        run: /
-            flutter upgrade
-            flutter pub get
+      # - name: Install Dependencies
+      #   run: /
+      #       flutter upgrade
+      #       flutter pub get
 
-      - name: Build AppBundle
-        run:  flutter build appbundle --release
+      # - name: Build AppBundle
+      #   run:  flutter build appbundle --release
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-              name: appbundle
-              path: build/app/outputs/bundle/release
+      # - name: Upload artifact
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #         name: appbundle
+      #         path: build/app/outputs/bundle/release
+        
     
 env:
   JAVA_VERSION: "11.x"
