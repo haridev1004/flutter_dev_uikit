@@ -43,7 +43,6 @@ jobs:
     
       - name: Use Keystore File
         run: |
-         echo "${{ secrets.KEYSTORE_FILE }}" | base64 --decode > keystore_file.keystore
          echo "${{ secrets.KEYSTORE_PASSWORD}}
          echo "${{ secrets.KEY_PASSWORD}}"
 
