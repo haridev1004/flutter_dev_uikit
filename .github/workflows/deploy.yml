@@ -43,8 +43,9 @@ jobs:
     
       - name: Use Keystore File
         run: |
-         echo "${{ secrets.KEYSTORE_PASSWORD}}
-         echo "${{ secrets.KEY_PASSWORD}}"
+              echo "${{ secrets.KEYSTORE_PASSWORD }}"
+              echo "${{ secrets.KEY_PASSWORD }}"
+          
 
       # - name: Sign Android AAB
       #   run: |
