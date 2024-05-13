@@ -3,51 +3,42 @@ on:
   push:
     branches: 
       - master
+
 jobs:
-  build:
-    name: Build & Release
-    runs-on: macos-latest
-    
+  flutter_test:
+    name: Run Flutter assigned build appbundle
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup Kava
-        uses: actions/setup-java@v3.12.0
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
         with:
-          distribution: 'oracle'
-          java-version: '17'
-      
-      - name: Set Up Flutter
-        uses: subosito/flutter-action@v2
+          java-version: ${{env.JAVA_VERSION}}
+      - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '3.19.6'
-          channel: 'stable' 
-      
-      - name: Install Dependencies
-        run: flutter pub get
-      
-      - name: Build App Bundle
-        run: |
-          flutter build appbundle --release \
-            --keystore="${{ secrets.KEYSTORE_FILE }}" \
-            --keystore-password="${{ secrets.KEYSTORE_PASSWORD }}" \
-            --key-alias="${{ secrets.KEY_ALIAS }}" \
-            --key-password="${{ secrets.KEY_PASSWORD }}"
+          channel: ${{env.FLUTTER_CHANNEL}}
+          flutter-version: ${{env.FLUTTER_VERSION}}
 
-      - name: Upload App Bundle
+      # Creating the key.properties file
+      - run: |
+          echo keyPassword=\${{ secrets.KEYSTORE_PASSWORD }} > ${{env.PROPERTIES_PATH}}
+          echo storePassword=\${{ secrets.KEY_PASSWORD }} >> ${{env.PROPERTIES_PATH}}
+          echo keyAlias=\${{ secrets.KEY_ALIAS }} >> ${{env.PROPERTIES_PATH}}
+        # Decoding base64 key into a file
+      - run: echo "${{ secrets.KEYSTORE_File }}" | base64 --decode > android/app/key.jks
+
+        # Get dependencies and make assigned appbundle
+      - run: | 
+            flutter pub get
+            flutter build appbundle
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: app-release
-          path: build/app/outputs/bundle/release/app-release.aab
+              name: appbundle
+              path: build/app/outputs/bundle/release
     
-      # - name: Use Keystore File
-      #   run: |
-      #         echo "${{ secrets.KEYSTORE_PASSWORD }}"
-      #         echo "${{ secrets.KEY_PASSWORD }}"
-      #         echo "${{ secrets.KEYSTORE_FILE }}"
-
-        
-      # - name: Build appBundle
-      #   run: flutter build appbundle 
-
+env:
+  JAVA_VERSION: "11.x"
+  FLUTTER_VERSION: "3.19.6"
+  FLUTTER_CHANNEL: "stable" 
+  PROPERTIES_PATH: "./android/key.properties"
