@@ -45,6 +45,8 @@ jobs:
         run: |
               echo "${{ secrets.KEYSTORE_PASSWORD }}"
               echo "${{ secrets.KEY_PASSWORD }}"
+              echo "${{ secrets.KEYSTORE_FILE }}"
+
           
 
       # - name: Sign Android AAB
