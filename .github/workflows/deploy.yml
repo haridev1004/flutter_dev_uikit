@@ -49,10 +49,13 @@ jobs:
 
           
 
-      # - name: Sign Android AAB
-      #   run: |
+      - name: Sign Android AAB
+        run: |
             
-      #         jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ${{ secrets.KEYSTORE_FILE }} -storepass ${{ secrets.KEYSTORE_PASSWORD }} -keypass ${{ secrets.KEY_PASSWORD }} build/app/outputs/bundle/release/app-release.aab ${{ secrets.KEY_ALIAS }}
+              jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ${{ secrets.KEYSTORE_FILE }} -storepass ${{ secrets.KEYSTORE_PASSWORD }} -keypass ${{ secrets.KEY_PASSWORD }} build/app/outputs/bundle/release/app-release.aab ${{ secrets.KEY_ALIAS }}
+
+      - name: Build appBundle
+        run: flutter build appbundle 
 
       # - name: Verify AAB
       #       run: jarsigner -verify -verbose -certs build/app/outputs/bundle/release/app-release.aab
