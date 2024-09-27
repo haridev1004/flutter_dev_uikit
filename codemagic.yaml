@@ -6,7 +6,7 @@ workflows:
     triggering:
       branch_patterns:
         - pattern: "master"
-        - include: true
+          include: true
           source: true # pr merged
       cancel_previous_builds: true   
     environment:
