@@ -11,7 +11,7 @@ workflows:
         - flutterdevuikit
       vars:
         PACKAGE_NAME: "com.flutterdev.uikit" # <-- Put your actual package name here
-        GOOGLE_PLAY_TRACK: "internal"
+        GOOGLE_PLAY_TRACK: "production"
       flutter: stable
       # groups:
       #   - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
@@ -52,7 +52,7 @@ workflows:
           failure: false
       google_play:
         credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-        track: internal
+        track: production
         submit_as_draft: true
   # ios-workflow:
   #   name: iOS Workflow
