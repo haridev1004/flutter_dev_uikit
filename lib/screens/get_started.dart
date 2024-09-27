@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dev_uikit/screens/home_screen.dart';
 import 'package:lottie/lottie.dart';
@@ -11,7 +10,7 @@ class GetStartedScreen extends StatefulWidget {
 }
 
 class _GetStartedScreenState extends State<GetStartedScreen> {
-  int currentIndex=0;
+  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     // final List<String> imgList = [
@@ -22,13 +21,9 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
     //   'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
     //   'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
     // ];
-    final List<Widget> items=[
-      firstSlide(),
-      secondSlide(),thirdSlide()
-    ];
+    final List<Widget> items = [firstSlide(), secondSlide(), thirdSlide()];
     return SafeArea(
       child: Scaffold(
-      
         body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
@@ -37,31 +32,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
             children: [
               Expanded(
                 flex: 3,
-                child: Container(
-                  child: CarouselSlider(
-                      items: items,
-                      options: CarouselOptions(
-                        height: 400,
-                        aspectRatio: 16 / 9,
-                        viewportFraction: 0.8,
-                        initialPage: 0,
-                        enableInfiniteScroll: true,
-                        reverse: false,
-                        autoPlay: true,
-                        autoPlayInterval: Duration(seconds: 3),
-                        autoPlayAnimationDuration: Duration(milliseconds: 800),
-                        autoPlayCurve: Curves.ease,
-                        enlargeCenterPage: true,
-
-                        enlargeFactor: 0.3,
-                        onPageChanged: (index, reason) {
-                          setState(() {
-                            currentIndex=index;
-                          });
-                        },
-                        scrollDirection: Axis.horizontal,
-                      )),
-                ),
+                child: Container(),
               ),
               Expanded(
                 flex: 1,
@@ -76,47 +47,44 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                           children: [
                             AnimatedContainer(
                               height: 10,
-                              width: currentIndex==0?20:10,
+                              width: currentIndex == 0 ? 20 : 10,
                               margin: EdgeInsets.symmetric(horizontal: 2),
                               duration: Duration(milliseconds: 500),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: Colors.red
-                              ),
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Colors.red),
                             ),
                             AnimatedContainer(
                               height: 10,
-                              width: currentIndex==1?20:10,
-                                                          margin: EdgeInsets.symmetric(horizontal: 2),
-        
+                              width: currentIndex == 1 ? 20 : 10,
+                              margin: EdgeInsets.symmetric(horizontal: 2),
                               duration: Duration(milliseconds: 500),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: Colors.red
-                              ),
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Colors.red),
                             ),
                             AnimatedContainer(
                               height: 10,
-                              width: currentIndex==2?20:10,
-                                                          margin: EdgeInsets.symmetric(horizontal: 2),
-        
+                              width: currentIndex == 2 ? 20 : 10,
+                              margin: EdgeInsets.symmetric(horizontal: 2),
                               duration: Duration(milliseconds: 500),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: Colors.red
-                              ),
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Colors.red),
                             )
                           ],
                         ),
                       ),
-                     Expanded(
-                      flex: 1,
-                      child:  ElevatedButton.icon(
-                        icon: Icon(Icons.chevron_right_rounded),
-                        onPressed: (){
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=> HomeScreen()));
-                        }, label: Text('Get Started')),
-                     )
+                      Expanded(
+                        flex: 1,
+                        child: ElevatedButton.icon(
+                            icon: Icon(Icons.chevron_right_rounded),
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => HomeScreen()));
+                            },
+                            label: Text('Get Started')),
+                      )
                     ],
                   ),
                 ),
@@ -129,7 +97,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
     );
   }
 
-  Widget firstSlide(){
+  Widget firstSlide() {
     return Column(
       children: [
         Expanded(
@@ -140,16 +108,16 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Flutter Widgets',
-                style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                  fontWeight: FontWeight.bold
+                Text(
+                  'Flutter Widgets',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineMedium!
+                      .copyWith(fontWeight: FontWeight.bold),
                 ),
-                
-                ),
-                Text('you know about widgets and its properties',
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                ),
-                
+                Text(
+                  'you know about widgets and its properties',
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(),
                 )
               ],
             ),
@@ -157,18 +125,18 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
         ),
         Expanded(
           flex: 4,
-          child: LottieBuilder.network('https://lottie.host/7199efa8-94a5-4ea0-ad5b-6f6c2a54b238/w3bd4I0Ahp.json'),
+          child: LottieBuilder.network(
+              'https://lottie.host/7199efa8-94a5-4ea0-ad5b-6f6c2a54b238/w3bd4I0Ahp.json'),
         ),
         Expanded(
           flex: 1,
-          child: Container(
-          ),
+          child: Container(),
         )
       ],
     );
   }
 
-  Widget secondSlide(){
+  Widget secondSlide() {
     return Column(
       children: [
         Expanded(
@@ -179,35 +147,34 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Download',
-                style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                  fontWeight: FontWeight.bold
+                Text(
+                  'Download',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineMedium!
+                      .copyWith(fontWeight: FontWeight.bold),
                 ),
-                
-                ),
-                Text('Source code for specific widget',
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                ),
-                
+                Text(
+                  'Source code for specific widget',
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(),
                 )
               ],
             ),
           ),
         ),
         Expanded(
-          flex: 4,
-          child: Lottie.network("https://lottie.host/74da317a-50aa-46c7-9b87-4b0733eb1636/36BaNQrkuK.json")
-        ),
+            flex: 4,
+            child: Lottie.network(
+                "https://lottie.host/74da317a-50aa-46c7-9b87-4b0733eb1636/36BaNQrkuK.json")),
         Expanded(
           flex: 1,
-          child: Container(
-          ),
+          child: Container(),
         )
       ],
     );
   }
 
-  Widget thirdSlide(){
+  Widget thirdSlide() {
     return Column(
       children: [
         Expanded(
@@ -218,29 +185,28 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Flutter',
-                style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                  fontWeight: FontWeight.bold
+                Text(
+                  'Flutter',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineMedium!
+                      .copyWith(fontWeight: FontWeight.bold),
                 ),
-                
-                ),
-                Text('Explore Flutter framework',
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                ),
-                
+                Text(
+                  'Explore Flutter framework',
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(),
                 )
               ],
             ),
           ),
         ),
         Expanded(
-          flex: 4,
-          child: Lottie.network("https://lottie.host/3dcc37c4-9aa4-45b1-8b6c-fa877cbf2ece/xs8OpL56Jf.json")
-        ),
+            flex: 4,
+            child: Lottie.network(
+                "https://lottie.host/3dcc37c4-9aa4-45b1-8b6c-fa877cbf2ece/xs8OpL56Jf.json")),
         Expanded(
           flex: 1,
-          child: Container(
-          ),
+          child: Container(),
         )
       ],
     );
