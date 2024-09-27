@@ -3,14 +3,16 @@ workflows:
     name: Android Workflow
     instance_type: mac_mini_m2
     max_build_duration: 120
-    vars:
-    PACKAGE_NAME: "com.flutterdev.uikit" # <-- Put your actual package name here
-    GOOGLE_PLAY_TRACK: "production"
+   
     environment:
       groups:
         - google_credentials      
       android_signing:
         - flutterdevuikit
+      vars:
+        PACKAGE_NAME: "com.flutterdev.uikit" # <-- Put your actual package name here
+        GOOGLE_PLAY_TRACK: "internal"
+      flutter: stable
       # groups:
       #   - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
       # vars:
