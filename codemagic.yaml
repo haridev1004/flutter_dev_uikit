@@ -53,7 +53,8 @@ workflows:
       google_play:
         credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
         track: production
-        submit_as_draft: true
+        submit_as_draft: false
+        
   # ios-workflow:
   #   name: iOS Workflow
   #   instance_type: mac_mini_m2
