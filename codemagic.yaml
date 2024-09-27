@@ -5,7 +5,7 @@ workflows:
     max_build_duration: 120
     triggering:
       branch_patterns:
-        - pattern: true
+        - pattern: "master"
         - include: true
           source: true # pr merged
       cancel_previous_builds: true   
