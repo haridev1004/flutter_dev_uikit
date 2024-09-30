@@ -8,7 +8,6 @@ workflows:
         - pattern: 'master'
           include: true
           source: true  
-      cancel_previous_builds: true
     environment:
       groups:
         - google_credentials      
