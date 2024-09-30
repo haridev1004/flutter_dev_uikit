@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
         title: Text('Home'),
       ),
       body: Center(
-        child: Text("we'll update soon stay here... "),
+        child: Text("we'll update soon stay here"),
       ),
       backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
     );
