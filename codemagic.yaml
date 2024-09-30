@@ -5,7 +5,7 @@ workflows:
       events:
         - pull_request
       branch_patterns:
-        - pattern: 'master'
+        - pattern: '*'
           include: true
           source: true  
     environment:
