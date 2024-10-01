@@ -66,6 +66,7 @@ workflows:
   #       submit_as_draft: false
         
   ios-workflow:
+    
     name: iOS
     # integrations: 
       # app_store_connect: zig_driver
@@ -85,9 +86,7 @@ workflows:
       #     - profile: cicd
       # vars:
       #     APP_STORE_APPLE_ID: 6670397561
-      flutter: stable
-      xcode: 16.0 # <-- set to specific version e.g. 14.3, 15.0 to avoid unexpected updates.
-      cocoapods: default
+    flutter: stable
     scripts:
       - name: Get Flutter packages
         script: |
