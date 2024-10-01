@@ -89,10 +89,8 @@ workflows:
     scripts:
       - name: Get Flutter packages
         script: |
-          flutter upgrade
           flutter pub get
-          cd ios
-          pod install  
+          find . -name "Podfile" -execdir pod install \;  
       - name: Set up code signing settings on Xcode project
         script: |
           xcode-project use-profiles
