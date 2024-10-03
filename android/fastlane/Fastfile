@@ -24,13 +24,12 @@ lane :production_release do
   )
 end
 
-lane :send_email do
-  mailgun(
-    api_key: "your-mailgun-api-key",
-    domain: "your-mailgun-domain",
-    to: ["recipient@example.com"],
-    from: "sender@example.com",
-    subject: "Fastlane Flutter Deployment Successful",
-    body: "The latest Flutter build has been successfully deployed."
-  )
+lane :build do 
+  # Build the app bundle if you haven't already 
+  gradle(task: 'bundleRelease')
+
+  # Build the new AppBundle every time you run the lane
+  sh("flutter clean")
+  sh("flutter pub get")
+  sh("flutter build appbundle --release")
 end

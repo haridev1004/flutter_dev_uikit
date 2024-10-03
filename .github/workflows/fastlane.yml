@@ -1,4 +1,4 @@
-name: Build and Deploy iOS App
+name: Build and Deploy Android App
 
 on:
   push:
@@ -10,26 +10,22 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest  # Use Ubuntu for Android builds
 
     steps:
-      - name: Checkout code 
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - name: Set up JDK
+        uses: actions/setup-java@v2
         with:
-          ruby-version: 3.0  # Set your Ruby version here
-
-      - name: Install dependencies
-        run: |
-          gem install bundler
-          bundle install
+          java-version: '11'  # Use the required JDK version
 
       - name: Install Fastlane
         run: |
-          gem install fastlane
+          sudo gem install fastlane
 
       - name: Run Fastlane
+        working-directory: android  # Set the working directory to android
         run: |
-          bundle exec fastlane build  # Replace 'build' with your lane name
+          fastlane build  # Replace 'build' with your lane name
