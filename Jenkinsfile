@@ -29,10 +29,10 @@ pipeline {
         
         stage("Publish"){
             steps{
-                sh 'ls'
+                    sh 'echo $PATH'
                 dir('android') {
                     sh "ls"
-                    sh "fastlane deploy"
+                    // sh "fastlane deploy"
                     }
             }
         }
