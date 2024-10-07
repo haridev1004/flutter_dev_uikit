@@ -21,20 +21,18 @@ pipeline {
             }
         }
 
-        // stage('Build'){
-        //     steps{
-        //         sh 'flutter build appbundle'
-        //     }
-        // }
+        stage('Build'){
+            steps{
+                sh 'flutter build appbundle --release'
+            }
+        }
         
         stage("Publish"){
             steps{
-                googlePlayPublisher(
-                    serviceAccountCredentials: credentials('google-play-json'), // Your credential ID
-                    applicationId: 'com.zig.driver', // Replace with your app's package name
-                    apkFiles: '**/build/app/outputs/bundle/release/app-release.aab', // Path to your AAB file
-                    track: 'production' // Specify the track (production, beta, alpha, etc.)
-                )
+                nodejs("node18") {
+                  sh 'cd android'
+                  sh 'fastlane deploy'
+                }
             }
         }
 
