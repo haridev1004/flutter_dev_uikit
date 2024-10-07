@@ -32,6 +32,7 @@ pipeline {
                 sh 'ls'
                 dir('android') {
                     sh "ls"
+                    sh "fastlane deploy"
                     }
             }
         }
