@@ -30,8 +30,9 @@ pipeline {
         stage("Publish"){
             steps{
                 sh 'ls'
-                sh 'cd android'
-                sh 'ls'
+                dir('android') {
+                    sh "ls"
+                    }
             }
         }
 
