@@ -29,8 +29,9 @@ pipeline {
         
         stage("Publish"){
             steps{
+                sh 'ls'
                 sh 'cd android'
-                sh 'ls -l'
+                sh 'ls'
             }
         }
 
