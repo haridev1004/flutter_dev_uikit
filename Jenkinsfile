@@ -30,7 +30,7 @@ pipeline {
         stage("Publish"){
             steps{
                 sh 'cd android'
-                sh 'fastlane deploy'
+                sh 'ls'
             }
         }
 
