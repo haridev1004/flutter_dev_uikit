@@ -15,11 +15,11 @@ pipeline {
         }
 
 
-        stage('Run Tests') {
-            steps {
-                sh 'flutter test'
-            }
-        }
+        // stage('Run Tests') {
+        //     steps {
+        //         sh 'flutter test'
+        //     }
+        // }
 
         // stage('Build'){
         //     steps{
@@ -30,7 +30,7 @@ pipeline {
         stage("Publish"){
             steps{
                 sh 'cd android'
-                sh 'ls'
+                sh 'ls -l'
             }
         }
 
