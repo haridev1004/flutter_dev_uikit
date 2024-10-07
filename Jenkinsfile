@@ -4,6 +4,7 @@ pipeline {
     environment {
         FLUTTER_HOME = '/Users/hari/Library/Flutter' // Set your Flutter SDK path
         PATH = "${env.FLUTTER_HOME}/bin:${env.PATH}" // Update PATH
+        FASTLANE_ENV = 'production'   
     }
 
     stages {
@@ -20,18 +21,16 @@ pipeline {
             }
         }
 
-        stage('Build'){
-            steps{
-                sh 'flutter build appbundle --release'
-            }
-        }
+        // stage('Build'){
+        //     steps{
+        //         sh 'flutter build appbundle --release'
+        //     }
+        // }
         
         stage("Publish"){
             steps{
-                nodejs("node18") {
-                  sh 'cd android'
-                  sh 'fastlane deploy'
-                }
+                sh 'cd android'
+                sh 'fastlane deploy'
             }
         }
 
