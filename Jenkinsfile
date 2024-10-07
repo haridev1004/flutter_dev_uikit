@@ -32,7 +32,7 @@ pipeline {
                     sh 'echo $PATH'
                 dir('android') {
                     sh "ls"
-                    // sh "fastlane deploy"
+                    sh "fastlane deploy"
                     }
             }
         }
