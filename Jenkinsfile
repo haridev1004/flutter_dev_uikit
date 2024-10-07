@@ -4,7 +4,7 @@ pipeline {
     environment {
         FLUTTER_HOME = '/Users/hari/Library/Flutter' // Set your Flutter SDK path
         FASTLANE_PATH = "/usr/local/bin/fastlane"
-        PATH = "${env.FLUTTER_HOME}/bin:${FASTLANE_PATH}:${env.PATH}" // Update PATH
+        PATH = "${env.FLUTTER_HOME}/bin:${env.FASTLANE_PATH}:${env.PATH}" // Update PATH
     }
 
     stages {
