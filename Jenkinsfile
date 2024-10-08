@@ -31,6 +31,14 @@ pipeline {
         // }
         
         stage("Publish"){
+                agent {
+        docker {
+            image 'openjdk:11'
+            args '-v "$PWD":/app'
+            reuseNode true
+        }
+    }
+
             steps{
                     sh 'echo $PATH'
                 dir('android') {
