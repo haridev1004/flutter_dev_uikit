@@ -26,10 +26,5 @@ end
 
 lane :build do 
   # Build the app bundle if you haven't already 
-  gradle(task: 'bundleRelease')
-
-  # Build the new AppBundle every time you run the lane
-  sh("flutter clean")
-  sh("flutter pub get")
-  sh("flutter build appbundle --release")
+  gradle(task: 'test')
 end
