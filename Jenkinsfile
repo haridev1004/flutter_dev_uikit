@@ -16,7 +16,13 @@ pipeline {
             steps {
                 git 'https://github.com/haridev1004/flutter_dev_uikit.git' // Replace with your repository URL
             }
+            steps {
+    sh "echo 'GRADLE_HOME: $GRADLE_HOME'"
+    sh "echo 'JAVA_HOME: $JAVA_HOME'"
+    sh "echo 'PATH: $PATH'"
+}
         }
+
 
 
         // stage('Run Tests') {
