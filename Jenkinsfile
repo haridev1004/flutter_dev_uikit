@@ -32,21 +32,21 @@ pipeline {
         
         stage('Setup') {
           steps {
-            dir(DIR) {
+            dir("android") {
               sh 'chmod +x ./gradlew'
             }
           }
         }
         stage('Build') {
           steps {
-            dir(DIR) {
+            dir("android") {
                 sh './gradlew build'
             }
           }
         }
         stage('Run tests') {
             steps {
-                dir(DIR) {
+                dir("android") {
                     sh './gradlew test'
                 }
             }
