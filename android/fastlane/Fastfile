@@ -22,8 +22,10 @@ platform :android do
 
   desc "Runs all the tests"
   lane :test do
-    sh "ls" # Use gradlew script for executing tests
-    sh "flutter build appbundle"
+    Dir.chdir('/') do  # Change to the android directory
+      sh "ls" # Use gradlew script for executing tests
+      sh "gradlew test"
+    end
   end
 
   desc "Submit a new Beta Build to Crashlytics Beta"
