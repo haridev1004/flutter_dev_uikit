@@ -4,8 +4,8 @@ pipeline {
     environment {
         FLUTTER_HOME = '/Users/hari/Library/Flutter' // Set your Flutter SDK path
         FASTLANE_PATH = "/usr/local/bin/fastlane"
-        JAVA_HOME="/usr/local/opt/openjdk@17/bin/java";
-        PATH = "${FLUTTER_HOME}/bin:${FASTLANE_PATH}:${JAVA_HOME}:${env.PATH}"
+        JAVA_HOME="/usr/local/opt/openjdk@17";
+        PATH = "${FLUTTER_HOME}/bin:${FASTLANE_PATH}:${JAVA_HOME}/bin:${env.PATH}"
         LANG = "en_US.UTF-8" // Set locale to UTF-8
     }
 
