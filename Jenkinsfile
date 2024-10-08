@@ -4,7 +4,8 @@ pipeline {
     environment {
         FLUTTER_HOME = '/Users/hari/Library/Flutter' // Set your Flutter SDK path
         FASTLANE_PATH = "/usr/local/bin/fastlane"
-        PATH = "${FLUTTER_HOME}/bin:${FASTLANE_PATH}:${env.PATH}"
+        JAVA_HOME="/usr/local/opt/openjdk@17/bin/java";
+        PATH = "${FLUTTER_HOME}/bin:${FASTLANE_PATH}:${JAVA_HOME}:${env.PATH}"
     }
 
     stages {
@@ -30,25 +31,13 @@ pipeline {
         //     }
         // }
         
-        stage('Setup') {
-          steps {
-            dir("android") {
-              sh 'chmod +x ./gradlew'
-            }
-          }
-        }
-        stage('Build') {
-          steps {
-            dir("android") {
-                sh './gradlew build'
-            }
-          }
-        }
-        stage('Run tests') {
-            steps {
-                dir("android") {
-                    sh './gradlew test'
-                }
+        stage("Publish"){
+            steps{
+                    sh 'echo $PATH'
+                dir('android') {
+                    sh "ls"
+                    sh "fastlane test"
+                    }
             }
         }
 
