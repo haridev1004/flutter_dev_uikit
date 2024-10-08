@@ -40,6 +40,7 @@ pipeline {
         stage("Fastlane Integration") {    
             steps{
                 sh "which fastlane"
+                sh "fastlane test"
             }
         }
 
