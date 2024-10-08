@@ -38,12 +38,14 @@ pipeline {
 
             }
         }
-        stage('Upload to Play Store') {
+        stage("Upload to Play Store") {
                     googlePlayPublisher(
                         serviceAccountCredentials: credentials('your-credentials-id'),
                         applicationId: 'your.application.id',
                         bundlePath: 'app/build/outputs/bundle/release/app-release.aab'
-                    )         }
+                    ) 
+                    
+        }
 
         
     }
