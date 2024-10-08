@@ -44,6 +44,7 @@ pipeline {
                 dir("android/fastlane"){
                 sh "java --version"
                 sh "gradle -v"
+                sh "fastlane test"
                 }
             }
         }
