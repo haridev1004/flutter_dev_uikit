@@ -30,14 +30,25 @@ pipeline {
         //     }
         // }
         
-        stage("Publish"){
-               
-            steps{
-                    sh 'echo $PATH'
-                dir('android') {
-                    sh "ls"
-                    sh "fastlane test"
-                    }
+        stage('Setup') {
+          steps {
+            dir(DIR) {
+              sh 'chmod +x ./gradlew'
+            }
+          }
+        }
+        stage('Build') {
+          steps {
+            dir(DIR) {
+                sh './gradlew build'
+            }
+          }
+        }
+        stage('Run tests') {
+            steps {
+                dir(DIR) {
+                    sh './gradlew test'
+                }
             }
         }
 
