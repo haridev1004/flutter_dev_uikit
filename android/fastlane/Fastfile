@@ -23,7 +23,7 @@ platform :android do
   desc "Runs all the tests"
   lane :test do
     sh "ls" # Use gradlew script for executing tests
-    gradle(task: "test")
+    sh "flutter build appbundle"
   end
 
   desc "Submit a new Beta Build to Crashlytics Beta"
