@@ -22,7 +22,7 @@ platform :android do
 
   desc "Runs all the tests"
   lane :test do
-    sh "gradlew test"
+    sh "gradle test"
   end
 
   desc "Submit a new Beta Build to Crashlytics Beta"
