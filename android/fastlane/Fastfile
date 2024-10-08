@@ -26,6 +26,5 @@ end
 
 lane :test do 
   # Build the app bundle if you haven't already 
-  sh("chmod +x ./gradlew")
-  sh("gradlew test")
+  sh './gradlew build'
 end
