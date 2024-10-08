@@ -24,7 +24,7 @@ lane :production_release do
   )
 end
 
-lane :build do 
+lane :test do 
   # Build the app bundle if you haven't already 
   gradle(task: 'test')
 end
