@@ -24,7 +24,8 @@ platform :android do
   lane :test do
     Dir.chdir('../') do  # Change to the android directory
       sh "ls" # Use gradlew script for executing tests
-      sh "gradle clean"
+      gradle(task: "test")
+
     end
   end
 
