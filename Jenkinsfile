@@ -42,6 +42,7 @@ pipeline {
                 sh "which fastlane"
                 dir("android/fastlane"){
                 sh "java --version"
+                sh "fastlane test"
                 }
             }
         }
