@@ -13,7 +13,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git 'https://github.com/haridev1004/cicd_pipeline_testing.git' // Replace with your repository URL
+                git 'https://github.com/haridev1004/flutter_dev_uikit.git' // Replace with your repository URL
             }
         }
 
