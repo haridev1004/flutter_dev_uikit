@@ -10,8 +10,6 @@ pipeline {
 
     stages {
 
-     
-
         stage('Checkout') {
             steps {
                 git 'https://github.com/haridev1004/flutter_dev_uikit.git' // Replace with your repository URL

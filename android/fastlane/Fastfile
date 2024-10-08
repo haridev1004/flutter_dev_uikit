@@ -1,31 +1,38 @@
-# Upload to production on Google Play
-lane :production_release do 
-  # Build the app bundle if you haven't already 
-  gradle(task: 'bundleRelease')
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
 
-  # Build the new AppBundle every time you run the lane
-  sh("flutter clean")
-  sh("flutter pub get")
-  sh("flutter build appbundle --release")
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
 
-  # Upload to production
-  upload_to_play_store(
-    track: 'production',  # Specify 'production' to release to the production track
-    aab: '../build/app/outputs/bundle/release/app-release.aab',  # Update if your AAB path differs
-    skip_upload_apk: true,
-    skip_upload_images: true,  # Uncomment if you don't want to upload images
-    skip_upload_screenshots: true,  # Uncomment if you don't want to upload screenshots
-    skip_upload_metadata: true,  # Uncomment if you don't want to upload metadata
-    skip_upload_changelogs: true,  # Uncomment if you don't want to upload changelogs
-    skip_upload_aab: false
+default_platform(:android)
 
-    # Uncomment the following line if using a service account (CI/CD)
-    # service_account_json: 'path/to/your/service_account_key.json'
-  )
-end
+platform :android do
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test")
+  end
 
-lane :test do 
-  # Build the app bundle if you haven't already 
-  sh 'ls'
-  sh 'gradlew build'
+  desc "Submit a new Beta Build to Crashlytics Beta"
+  lane :beta do
+    gradle(task: "clean assembleRelease")
+    crashlytics
+  
+    # sh "your_script.sh"
+    # You can also use other beta testing services here
+  end
+
+  desc "Deploy a new version to the Google Play"
+  lane :deploy do
+    gradle(task: "clean assembleRelease")
+    upload_to_play_store
+  end
 end
