@@ -9,12 +9,7 @@ pipeline {
 
     stages {
 
-        stage("Dependencies"){
-            steps{
-                sh 'bundle install'
-                        
-            }
-        }
+     
 
         stage('Checkout') {
             steps {
@@ -40,8 +35,7 @@ pipeline {
                     sh 'echo $PATH'
                 dir('android') {
                     sh "ls"
-                    sh 'adb shell input keyevent 82'
-                    sh 'bundle exec fastlane deploy'
+             
                     }
             }
         }
