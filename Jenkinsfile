@@ -33,11 +33,9 @@ pipeline {
         
         stage("Publish"){
             steps{
-                    sh 'echo $PATH'
-                dir('android') {
-                    // sh "ls"
-                    sh "fastlane test"
-                    }
+                sh 'echo $PATH'
+                sh "fastlane test"
+
             }
         }
 
