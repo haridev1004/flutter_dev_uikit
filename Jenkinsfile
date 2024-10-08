@@ -11,9 +11,8 @@ pipeline {
 
         stage("Dependencies"){
             steps{
-                 'Install Dependencies': {
-                            sh 'bundle install'
-                        }
+                sh 'bundle install'
+                        
             }
         }
 
