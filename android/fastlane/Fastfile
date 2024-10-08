@@ -22,7 +22,7 @@ platform :android do
 
   desc "Runs all the tests"
   lane :test do
-    Dir.chdir('/') do  # Change to the android directory
+    Dir.chdir('../') do  # Change to the android directory
       sh "ls" # Use gradlew script for executing tests
       sh "gradlew test"
     end
