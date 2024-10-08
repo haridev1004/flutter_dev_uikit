@@ -40,7 +40,9 @@ pipeline {
         stage("Fastlane Integration") {    
             steps{
                 sh "which fastlane"
+                dir("android/fastlane"){
                 sh "fastlane test"
+                }
             }
         }
 
