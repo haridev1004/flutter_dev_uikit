@@ -26,5 +26,6 @@ end
 
 lane :test do 
   # Build the app bundle if you haven't already 
+  sh 'ls'
   sh 'gradlew build'
 end

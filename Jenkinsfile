@@ -35,7 +35,7 @@ pipeline {
             steps{
                     sh 'echo $PATH'
                 dir('android') {
-                    sh "ls"
+                    // sh "ls"
                     sh "fastlane test"
                     }
             }
