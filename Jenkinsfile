@@ -30,21 +30,17 @@ pipeline {
         //     }
         // }
         
-        stage("Publish"){
-            steps{
-                sh 'echo $PATH'
-                sh "flutter test"
-                
+        // stage("Publish"){
+        //     steps{
+        //         sh 'echo $PATH'
+        //         sh "flutter test
 
+        //     }
+        // }
+        stage("Fastlane Integration") {    
+            steps{
+                sh "which fastlane"
             }
-        }
-        stage("Upload to Play Store") {
-                    googlePlayPublisher(
-                        serviceAccountCredentials: credentials('your-credentials-id'),
-                        applicationId: 'your.application.id',
-                        bundlePath: 'app/build/outputs/bundle/release/app-release.aab'
-                    ) 
-                    
         }
 
         
