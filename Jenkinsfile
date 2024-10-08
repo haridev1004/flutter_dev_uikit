@@ -8,6 +8,15 @@ pipeline {
     }
 
     stages {
+
+        stage("Dependencies"){
+            steps{
+                 'Install Dependencies': {
+                            sh 'bundle install'
+                        }
+            }
+        }
+
         stage('Checkout') {
             steps {
                 git 'https://github.com/haridev1004/cicd_pipeline_testing.git' // Replace with your repository URL
@@ -32,7 +41,8 @@ pipeline {
                     sh 'echo $PATH'
                 dir('android') {
                     sh "ls"
-                    sh "fastlane deploy"
+                    sh 'adb shell input keyevent 82'
+                    sh 'bundle exec fastlane deploy'
                     }
             }
         }
