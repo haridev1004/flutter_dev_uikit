@@ -22,11 +22,8 @@ platform :android do
 
   desc "Runs all the tests"
   lane :test do
-    Dir.chdir('../') do  # Change to the android directory
-      sh "ls" # Use gradlew script for executing tests
-      gradle(task: "test")
-
-    end
+    sh "ls" # Use gradlew script for executing tests
+    gradle(task: "test")
   end
 
   desc "Submit a new Beta Build to Crashlytics Beta"
